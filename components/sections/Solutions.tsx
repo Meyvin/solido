@@ -151,7 +151,7 @@ export default function Solutions() {
 
   return (
     <section className="py-24 bg-[#ffffff] overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* HEADER */}
         <div className="mb-14">
           {/* TAG */}
@@ -171,7 +171,7 @@ export default function Solutions() {
           {/* TITLE */}
           <h2
             className="
-              text-[36px]
+             text-3xl sm:text-4xl lg:text-[36px]
               leading-[1.1]
               font-bold
               text-[#111827]
@@ -185,21 +185,24 @@ export default function Solutions() {
           <div
             className="
               flex
-              flex-wrap
               items-center
-              gap-12
+              gap-6
+              lg:gap-12
+              overflow-x-auto
+              whitespace-nowrap
               border-b
               border-[#D9D9D9]
               pb-5
+              scrollbar-hide
             "
-          >
+>
             {tabs.map((tab, index) => (
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
                 className="
                   relative
-                  text-[16px]
+                  text-sm lg:text-[16px]
                   font-medium
                   pb-5
                   transition-all
@@ -237,18 +240,22 @@ export default function Solutions() {
         {/* CARDS CONTAINER */}
         <div
           className="
-            bg-[#F9FAFB]
-            rounded-[24px]
-            p-10
+           bg-[#F9FAFB]
+              rounded-[24px]
+              p-4
+              sm:p-6
+              lg:p-10
           "
         >
           {/* GRID */}
           <div
             className="
-              grid
-              grid-cols-1
-              xl:grid-cols-2
-              gap-8
+            grid
+            grid-cols-1
+            lg:grid-cols-2
+            gap-4
+            sm:gap-6
+            lg:gap-8
             "
           >
             {cardsData[
@@ -258,12 +265,16 @@ export default function Solutions() {
                 key={index}
                 className="
                   w-full
-                  h-[280px]
+                  min-h-[240px]
+                  lg:h-[280px]
+                  p-5
+                  sm:p-7
+                  lg:p-10
                   rounded-[16px]
                   border-[2px]
                   border-[#EAEAEA]
                   bg-white
-                  p-10
+                  
                   transition-all
                   duration-300
                   hover:shadow-[0_10px_40px_rgba(0,0,0,0.04)]
@@ -280,7 +291,7 @@ export default function Solutions() {
                     flex
                     items-center
                     justify-center
-                    mb-10
+                    mb-6 lg:mb-10
                   "
                 >
                   <Image
@@ -295,7 +306,7 @@ export default function Solutions() {
                 {/* TITLE */}
                 <h3
                   className="
-                    text-[24px]
+                    text-xl lg:text-[24px]
                     leading-[1.2]
                     font-semibold
                     text-[#F5B400]
@@ -309,7 +320,7 @@ export default function Solutions() {
                 {/* DESCRIPTION */}
                 <p
                   className="
-                    text-[14px]
+                    text-sm
                     leading-7
                     text-[#6B7280]
                     max-w-[430px]

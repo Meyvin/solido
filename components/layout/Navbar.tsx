@@ -1,9 +1,6 @@
-// components/layout/Navbar.tsx
-
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,6 +11,8 @@ import {
   PiggyBank,
   Landmark,
   ArrowUpRight,
+  Menu,
+  X,
 } from "lucide-react";
 
 const menuItems = [
@@ -22,78 +21,65 @@ const menuItems = [
     links: [
       {
         label: "Abrir Conta Bancária",
-        desc: "Abra a sua conta em poucos minutos",
         icon: Landmark,
         href: "/particulares/conta",
       },
       {
         label: "Conta Sólido Menor",
-        desc: "Soluções para menores de idade",
         icon: CreditCard,
         href: "/particulares/menor",
       },
       {
         label: "Conta Bancária Sólido",
-        desc: "Conta à ordem para o dia a dia",
         icon: CreditCard,
         href: "/particulares/cartoes",
       },
       {
         label: "Poupança",
-        desc: "Faça crescer o seu dinheiro",
         icon: PiggyBank,
         href: "/particulares/poupanca",
       },
       {
         label: "Transferências",
-        desc: "Envie dinheiro com segurança",
         icon: ArrowUpRight,
         href: "/particulares/transferencias",
       },
     ],
   },
-
   {
     title: "Empresas",
     links: [
       {
         label: "Conta Empresarial",
-        desc: "Gestão financeira para empresas",
         icon: Landmark,
         href: "/empresarial/abrirconsta",
       },
       {
         label: "Crédito Empresarial",
-        desc: "Soluções de financiamento",
         icon: CreditCard,
         href: "/empresarial/conta",
       },
       {
         label: "Soluções Empresariais",
-        desc: "Serviços financeiros para apoiar a gestão e o crescimento da sua empresa.",
         icon: ArrowUpRight,
         href: "/empresarial/solucoes",
       },
       {
         label: "POS",
-        desc: "Receba pagamentos facilmente",
         icon: CreditCard,
         href: "/empresarial/pos",
       },
       {
         label: "Internet Banking",
-        desc: "Controle a empresa online",
         icon: PiggyBank,
         href: "/empresarial/internet-banking",
       },
     ],
   },
-
   {
     title: "Sobre Nós",
     href: "/sobre",
   },
-
   {
     title: "Contacto",
     href: "/contacto",
@@ -101,7 +87,8 @@ const menuItems = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] =
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
 
   useEffect(() => {
@@ -132,10 +119,9 @@ export default function Navbar() {
         z-50
         transition-all
         duration-500
-
         ${
           scrolled
-            ? "bg-[#111827]/80 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] py-4"
+            ? "bg-[#111827]/90 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] py-4"
             : "bg-transparent py-6"
         }
       `}
@@ -144,7 +130,9 @@ export default function Navbar() {
         className="
           max-w-[1440px]
           mx-auto
-          px-10
+          px-4
+          sm:px-6
+          lg:px-10
           flex
           items-center
           justify-between
@@ -165,10 +153,16 @@ export default function Navbar() {
             width={80}
             height={60}
             priority
+            className="
+              w-[60px]
+              sm:w-[70px]
+              lg:w-[80px]
+              h-auto
+            "
           />
         </Link>
 
-        {/* MENUS */}
+        {/* MENU DESKTOP */}
         <nav
           className="
             hidden
@@ -185,12 +179,8 @@ export default function Navbar() {
             return (
               <div
                 key={index}
-                className="
-                  relative
-                  group
-                "
+                className="relative group"
               >
-                {/* MENU BUTTON */}
                 <Link
                   href={item.href || "#"}
                   className="
@@ -218,7 +208,6 @@ export default function Navbar() {
                   )}
                 </Link>
 
-                {/* DROPDOWN */}
                 {hasDropdown && (
                   <div
                     className="
@@ -249,7 +238,7 @@ export default function Navbar() {
                       "
                     >
                       <div className="flex flex-col gap-4">
-                        {item.links?.map(
+                        {item.links.map(
                           (link, idx) => (
                             <Link
                               key={idx}
@@ -277,66 +266,176 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* BUTTONS */}
-        <div
-          className="
-            flex
-            items-center
-            gap-4
-          "
-        >
-          {/* LOGIN */}
-          <button
-            className="
-              h-[52px]
-              px-7
-              rounded-full
-              border
-              border-white
-              flex
-              items-center
-              gap-3
-              text-white
-              text-[16px]
-              font-medium
-              transition-all
-              duration-300
+        {/* BOTÕES + MOBILE */}
+        <div className="flex items-center gap-3">
+          {/* Desktop */}
+          <div className="hidden lg:flex items-center gap-4">
+            <button
+              className="
+                h-[52px]
+                px-7
+                rounded-full
+                border
+                border-white
+                flex
+                items-center
+                gap-3
+                text-white
+                text-[16px]
+                font-medium
+                transition-all
+                duration-300
+                hover:bg-white
+                hover:text-[#111827]
+              "
+            >
+              <Lock size={16} />
+              Entrar
+            </button>
 
-              hover:bg-white
-              hover:text-[#111827]
-              hover:scale-[1.03]
+            <button
+              className="
+                h-[52px]
+                px-8
+                rounded-full
+                bg-[#F5B400]
+                flex
+                items-center
+                justify-center
+                text-white
+                text-[16px]
+                font-semibold
+                transition-all
+                duration-300
+                hover:bg-[#e0a800]
+              "
+            >
+              E-Banking
+            </button>
+          </div>
+
+          {/* Mobile */}
+          <button
+            onClick={() =>
+              setMobileMenuOpen(
+                !mobileMenuOpen
+              )
+            }
+            className="
+              lg:hidden
+              text-white
+              p-2
             "
           >
-            <Lock size={16} />
-
-            Entrar
-          </button>
-
-          {/* OPEN ACCOUNT */}
-          <button
-            className="
-              h-[52px]
-              px-8
-              rounded-full
-              bg-[#F5B400]
-              flex
-              items-center
-              justify-center
-              text-white
-              text-[16px]
-              font-semibold
-              transition-all
-              duration-300
-
-              hover:bg-[#e0a800]
-              hover:scale-[1.03]
-              hover:shadow-[0_10px_30px_rgba(245,180,0,0.35)]
-            "
-          >
-            E-Banking
+            {mobileMenuOpen ? (
+              <X size={28} />
+            ) : (
+              <Menu size={28} />
+            )}
           </button>
         </div>
       </div>
+
+      {/* MENU MOBILE */}
+      {mobileMenuOpen && (
+        <div
+          className="
+            lg:hidden
+            bg-[#111827]
+            border-t
+            border-white/10
+            shadow-xl
+          "
+        >
+          <div className="px-6 py-6 flex flex-col gap-5">
+            {menuItems.map(
+              (item, index) => (
+                <div key={index}>
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      onClick={() =>
+                        setMobileMenuOpen(
+                          false
+                        )
+                      }
+                      className="
+                        block
+                        text-white
+                        text-lg
+                        font-medium
+                        py-2
+                      "
+                    >
+                      {item.title}
+                    </Link>
+                  ) : (
+                    <>
+                      <h3
+                        className="
+                          text-[#F5B400]
+                          font-semibold
+                          mb-2
+                        "
+                      >
+                        {item.title}
+                      </h3>
+
+                      <div className="flex flex-col gap-2 ml-3">
+                        {item.links?.map(
+                          (link) => (
+                            <Link
+                              key={link.label}
+                              href={link.href}
+                              onClick={() =>
+                                setMobileMenuOpen(
+                                  false
+                                )
+                              }
+                              className="
+                                text-white/80
+                                text-sm
+                              "
+                            >
+                              {link.label}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    </>
+                  )}
+                </div>
+              )
+            )}
+
+            <div className="flex flex-col gap-3 pt-4">
+              <button
+                className="
+                  h-12
+                  rounded-full
+                  border
+                  border-white
+                  text-white
+                "
+              >
+                Entrar
+              </button>
+
+              <button
+                className="
+                  h-12
+                  rounded-full
+                  bg-[#F5B400]
+                  text-white
+                  font-semibold
+                "
+              >
+                E-Banking
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

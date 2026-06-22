@@ -42,16 +42,16 @@ const news = [
 
 export default function News() {
   return (
-    <section className="py-24 bg-[#F7F7F7]">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <section className=" py-16 lg:py-24 bg-[#F7F7F7]">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* HEADER */}
-        <div className="mb-14">
+        <div className="mb-10 lg:mb-14">
           <p
             className="
               uppercase
               tracking-[3px]
               text-[#F5B400]
-              text-[13px]
+              text-xs lg:text-[13px]
               font-semibold
               mb-4
             "
@@ -61,7 +61,9 @@ export default function News() {
 
           <h2
             className="
-              text-[56px]
+              text-3xl
+              sm:text-4xl
+              lg:text-[56px]
               leading-[1.05]
               font-bold
               text-[#111827]
@@ -77,7 +79,7 @@ export default function News() {
             flex
             flex-col
             xl:flex-row
-            gap-8
+           gap-6 lg:gap-8
             items-start
           "
         >
@@ -86,8 +88,10 @@ export default function News() {
             className="
               relative
               w-full
-              xl:w-[592px]
-              h-[744px]
+             xl:w-[592px]
+              h-[500px]
+              sm:h-[600px]
+              lg:h-[744px]
               rounded-[14px]
               overflow-hidden
               flex-shrink-0
@@ -119,8 +123,10 @@ export default function News() {
               className="
                 absolute
                 inset-0
-                px-8
-                pb-8
+                px-5
+                sm:px-8
+                pb-5
+                sm:pb-8
                 flex
                 flex-col
                 justify-end
@@ -143,7 +149,9 @@ export default function News() {
               <h3
                 className="
                   text-white
-                  text-[36px]
+                  text-2xl
+                  sm:text-3xl
+                  lg:text-[36px]
                   leading-[1.1]
                   font-bold
                   max-w-[470px]
@@ -159,8 +167,10 @@ export default function News() {
               <p
                 className="
                   text-white/85
-                  text-[16px]
-                  leading-7
+                  text-sm
+                  sm:text-base
+                  leading-6
+                  sm:leading-7
                   max-w-[440px]
                   mb-8
                 "
@@ -201,7 +211,7 @@ export default function News() {
             className="
               flex
               flex-col
-              gap-6
+              gap-4 lg:gap-6
               w-full
               xl:w-[592px]
             "
@@ -211,12 +221,17 @@ export default function News() {
                 key={index}
                 className="
                   w-full
-                  h-[168px]
+                  
                   rounded-[14px]
                   bg-[#FAFAFA]
                   border
                   border-[#EFEFEF]
-                  px-8
+                  min-h-[180px]
+                  lg:h-[168px]
+                  px-5
+                  sm:px-8
+                  py-5
+                  lg:py-0
                   flex
                   flex-col
                   justify-center
@@ -242,7 +257,8 @@ export default function News() {
                 {/* TITLE */}
                 <h3
                   className="
-                    text-[18px]
+                    text-base
+                    lg:text-[18px]
                     leading-[1.3]
                     font-bold
                     text-[#111827]
@@ -257,7 +273,7 @@ export default function News() {
                 <p
                   className="
                     text-[#6B7280]
-                    text-[14px]
+                    text-sm
                     leading-6
                     mb-4
                   "

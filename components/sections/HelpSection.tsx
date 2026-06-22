@@ -141,7 +141,15 @@ export default function HelpSection() {
 
   return (
     <section className="py-24 bg-[#F7F7F7] overflow-hidden">
-      <div className="max-w-[1360px] mx-auto px-8">
+      <div
+        className="
+          max-w-[1360px]
+          mx-auto
+          px-4
+          sm:px-6
+          lg:px-8
+        "
+      >
         {/* HEADER */}
         <div className="mb-12">
           <p
@@ -157,14 +165,16 @@ export default function HelpSection() {
             O QUE VOCÊ PRECISA?
           </p>
 
-          <h2
-            className="
-              text-[36px]
-              leading-[1.1]
-              font-bold
-              text-[#111827]
-            "
-          >
+        <h2
+          className="
+            text-3xl
+            sm:text-4xl
+            lg:text-[36px]
+            leading-[1.1]
+            font-bold
+            text-[#111827]
+          "
+        >
             Como podemos ajudar você hoje?
           </h2>
         </div>
@@ -204,17 +214,16 @@ export default function HelpSection() {
           </button>
 
           {/* TABS */}
-          <div
-            className="
-              flex
-              items-center
-              gap-4
-              flex-nowrap
-              whitespace-nowrap
-              overflow-hidden
-              w-full
-            "
-          >
+            <div
+              className="
+                flex
+                items-center
+                gap-3
+                overflow-x-auto
+                w-full
+                scrollbar-hide
+              "
+            >
             {visibleTabs.map((tab, index) => {
               const Icon = tab.icon;
 
@@ -231,8 +240,12 @@ export default function HelpSection() {
                     setActiveTab(realIndex)
                   }
                   className={`
-                    h-[56px]
-                    px-8
+                    h-[48px]
+                    sm:h-[56px]
+                    px-4
+                    sm:px-8
+                    text-sm
+                    sm:text-base
                     rounded-full
                     border
                     transition-all
@@ -240,7 +253,6 @@ export default function HelpSection() {
                     flex
                     items-center
                     gap-3
-                    text-[16px]
                     leading-none
                     font-medium
                     whitespace-nowrap
@@ -288,7 +300,15 @@ export default function HelpSection() {
         </div>
 
         {/* CARDS */}
-        <div className="flex items-start gap-8">
+        <div
+          className="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            xl:grid-cols-3
+            gap-6
+          "
+        >
           {currentCards.map((card, index) => {
             const isHovered =
               hoveredCard === index;
@@ -302,21 +322,22 @@ export default function HelpSection() {
                 onMouseLeave={() =>
                   setHoveredCard(0)
                 }
-                className={`
-                  relative
-                  overflow-hidden
-                  rounded-[16px]
-                  transition-all
-                  duration-500
-                  ease-in-out
-                  cursor-pointer
-                  flex-shrink-0
-                  ${
-                    isHovered
-                      ? "w-[624px] h-[320px]"
-                      : "w-[389px] h-[320px]"
-                  }
-                `}
+              className={`
+                relative
+                overflow-hidden
+                rounded-[16px]
+                transition-all
+                duration-500
+                ease-in-out
+                cursor-pointer
+                w-full
+                h-[320px]
+                ${
+                  isHovered
+                    ? "lg:scale-[1.03]"
+                    : "scale-100"
+                }
+              `}
               >
                 {/* IMAGE */}
                 <Image
@@ -384,7 +405,8 @@ export default function HelpSection() {
                   <div>
                     <h3
                       className="
-                        text-[24px]
+                        text-xl
+                        sm:text-2xl
                         leading-[1.15]
                         font-bold
                         mb-5
@@ -397,7 +419,7 @@ export default function HelpSection() {
 
                     <p
                       className="
-                        text-[14px]
+                        text-sm
                         leading-7
                         text-white/90
                         whitespace-pre-line
@@ -411,7 +433,8 @@ export default function HelpSection() {
                   {/* BUTTON */}
                   <button
                     className={`
-                      w-[131px]
+                      w-full
+                      sm:w-[131px]
                       h-[36px]
                       rounded-full
                       border

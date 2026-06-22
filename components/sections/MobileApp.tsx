@@ -13,16 +13,17 @@ const features = [
 
 export default function MobileApp() {
   return (
-    <section className="py-24 bg-[#FFFFFF] overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <section className="py-16 lg:py-24 bg-[#FFFFFF] overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="
-            flex
+           flex
             flex-col
             xl:flex-row
             items-center
             justify-between
             gap-10
+            lg:gap-16
           "
         >
           {/* LEFT SIDE */}
@@ -32,6 +33,9 @@ export default function MobileApp() {
               relative
               w-full
               max-w-[520px]
+              xl:max-w-[520px]
+              text-center
+              xl:text-left
               transition-all
               duration-700
             "
@@ -67,7 +71,9 @@ export default function MobileApp() {
             {/* TITLE */}
             <h2
               className="
-                text-[36px]
+               text-3xl
+                sm:text-4xl
+                lg:text-[36px]
                 leading-[1.1]
                 font-bold
                 text-[#111827]
@@ -83,8 +89,10 @@ export default function MobileApp() {
             {/* DESCRIPTION */}
             <p
               className="
-                text-[16px]
-                leading-8
+               text-sm
+                sm:text-base
+                leading-7
+                sm:leading-8
                 text-[#6B7280]
                 max-w-[500px]
                 mb-10
@@ -106,8 +114,9 @@ export default function MobileApp() {
                 grid
                 grid-cols-1
                 sm:grid-cols-2
-                gap-y-5
-                gap-x-10
+               gap-y-4
+                gap-x-6
+                sm:gap-x-10
                 mb-12
               "
             >
@@ -115,8 +124,10 @@ export default function MobileApp() {
                 <div
                   key={index}
                   className="
-                    flex
+                      flex
                     items-center
+                    justify-center
+                    xl:justify-start
                     gap-3
                     transition-all
                     duration-500
@@ -139,7 +150,7 @@ export default function MobileApp() {
                   {/* TEXT */}
                   <p
                     className="
-                      text-[14px]
+                      text-sm
                       text-[#F5B400]
                       font-medium
                       transition-all
@@ -154,11 +165,16 @@ export default function MobileApp() {
             </div>
 
             {/* STORES */}
-            <div
+           <div
               className="
                 flex
-                items-center
-                gap-8
+                flex-col
+                sm:flex-row
+                items-start
+                sm:items-center
+                gap-4
+                sm:gap-6
+                lg:gap-8
                 mt-2
               "
             >
@@ -167,8 +183,10 @@ export default function MobileApp() {
                 className="
                   group/store
                   relative
-                  w-[205px]
-                  h-[68px]
+                 w-[180px]
+                  sm:w-[205px]
+                  h-[60px]
+                  sm:h-[68px]
                   rounded-[16px]
                   bg-transparent
                   flex
@@ -216,8 +234,10 @@ export default function MobileApp() {
                 className="
                   group/store2
                   relative
-                  w-[205px]
-                  h-[68px]
+                 w-[180px]
+                  sm:w-[205px]
+                  h-[60px]
+                  sm:h-[68px]
                   rounded-[16px]
                   bg-transparent
                   flex
@@ -269,7 +289,10 @@ export default function MobileApp() {
               relative
               w-full
               max-w-[628px]
-              h-[649px]
+              h-[350px]
+              sm:h-[450px]
+              lg:h-[550px]
+              xl:h-[649px]
               flex
               items-center
               justify-center

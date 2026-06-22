@@ -39,8 +39,7 @@ const [hovered, setHovered] = useState(0);
 
   return (
     <section className="py-24 bg-[#ffffff] overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-8">
-        {/* HEADER */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
           {/* TAG */}
           <p
@@ -59,7 +58,7 @@ const [hovered, setHovered] = useState(0);
           {/* TITLE */}
           <h2
             className="
-              text-[36px]
+              text-3xl sm:text-4xl lg:text-[36px]
               leading-[1.1]
               font-bold
               text-[#111827]
@@ -70,13 +69,16 @@ const [hovered, setHovered] = useState(0);
         </div>
 
         {/* CARDS */}
-        <div
-          className="
-            flex
-            items-start
-            gap-10
-          "
-        >
+
+          {/* Desktop */}
+          <div
+            className="
+              hidden
+              lg:flex
+              items-start
+              gap-10
+            "
+          >
           {offers.map((offer, index) => {
            const isHovered = hovered === index;
 
@@ -209,7 +211,74 @@ const [hovered, setHovered] = useState(0);
             );
           })}
         </div>
+          {/* Mobile / Tablet */}
+          <div
+            className="
+              grid
+              grid-cols-1
+              md:grid-cols-2
+              gap-6
+              lg:hidden
+            "
+          >
+            {offers.map((offer, index) => (
+              <div
+                key={index}
+                className="
+                  overflow-hidden
+                  rounded-[20px]
+                "
+              >
+                <div className="relative h-[240px]">
+                  <Image
+                    src={offer.image}
+                    alt={offer.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="pt-5">
+                  <h3
+                    className="
+                      text-xl
+                      font-bold
+                      text-[#FBB400]
+                      mb-3
+                    "
+                  >
+                    {offer.title}
+                  </h3>
+
+                  <p
+                    className="
+                      text-sm
+                      text-[#111827]
+                      mb-4
+                      leading-6
+                    "
+                  >
+                    {offer.description}
+                  </p>
+
+                  <button
+                    className="
+                      flex
+                      items-center
+                      gap-3
+                      text-[#FBB400]
+                      font-medium
+                    "
+                  >
+                    {offer.button}
+                    <ArrowRight size={18} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        
       </div>
-    </section>
-  );
+</section>
+);
 }
